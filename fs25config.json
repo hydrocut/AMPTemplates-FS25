@@ -1,5 +1,19 @@
 [
   {
+    "DisplayName": "01 - Nom du conteneur Docker",
+    "Description": "Nom unique du conteneur Docker de ce serveur. DOIT être différent pour chaque instance FS25 (ex. fs25-tk01, fs25-tk02...).",
+    "FieldName": "ContainerName",
+    "InputType": "text",
+    "Category": "Farming Simulator 25",
+    "Subcategory": "Démarrage",
+    "ParamFieldName": "ContainerName",
+    "IncludeInCommandLine": false,
+    "DefaultValue": "fs25-teamkit",
+    "Keywords": "fs25 containername",
+    "Required": true,
+    "Placeholder": "fs25-tk01"
+  },
+  {
     "DisplayName": "02 - UID hôte (PUID)",
     "Description": "UID de l'utilisateur amp sur la machine hôte (commande : id amp). Nécessaire pour les permissions des volumes.",
     "FieldName": "HostUid",

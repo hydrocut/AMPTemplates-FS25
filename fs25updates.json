@@ -30,5 +30,21 @@
     "UpdateSourceArgs": "{{$FullBaseDir}}installer",
     "OverwriteExistingFiles": false,
     "SkipOnFailure": false
+  },
+  {
+    "UpdateStageName": "Téléchargement de l'image Docker",
+    "UpdateSourcePlatform": "Linux",
+    "UpdateSource": "Executable",
+    "UpdateSourceData": "/usr/bin/docker",
+    "UpdateSourceArgs": "pull toetje585/arch-fs25server:latest",
+    "SkipOnFailure": false
+  },
+  {
+    "UpdateStageName": "Nettoyage conteneur résiduel",
+    "UpdateSourcePlatform": "Linux",
+    "UpdateSource": "Executable",
+    "UpdateSourceData": "/usr/bin/docker",
+    "UpdateSourceArgs": "rm -f {{ContainerName}}",
+    "SkipOnFailure": true
   }
 ]
