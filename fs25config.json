@@ -1,0 +1,251 @@
+[
+  {
+    "DisplayName": "01 - Nom du conteneur Docker",
+    "Description": "Nom unique du conteneur Docker de ce serveur. DOIT être différent pour chaque instance FS25 (ex. fs25-tk01, fs25-tk02...).",
+    "FieldName": "ContainerName",
+    "InputType": "text",
+    "Category": "Farming Simulator 25",
+    "Subcategory": "Démarrage",
+    "ParamFieldName": "ContainerName",
+    "IncludeInCommandLine": false,
+    "DefaultValue": "fs25-teamkit",
+    "Keywords": "fs25 containername",
+    "Required": true,
+    "Placeholder": "fs25-tk01"
+  },
+  {
+    "DisplayName": "02 - UID hôte (PUID)",
+    "Description": "UID de l'utilisateur amp sur la machine hôte (commande : id amp). Nécessaire pour les permissions des volumes.",
+    "FieldName": "HostUid",
+    "InputType": "number",
+    "Category": "Farming Simulator 25",
+    "Subcategory": "Démarrage",
+    "ParamFieldName": "HostUid",
+    "IncludeInCommandLine": false,
+    "DefaultValue": "1000",
+    "Keywords": "fs25 hostuid"
+  },
+  {
+    "DisplayName": "03 - GID hôte (PGID)",
+    "Description": "GID de l'utilisateur amp sur la machine hôte (commande : id amp).",
+    "FieldName": "HostGid",
+    "InputType": "number",
+    "Category": "Farming Simulator 25",
+    "Subcategory": "Démarrage",
+    "ParamFieldName": "HostGid",
+    "IncludeInCommandLine": false,
+    "DefaultValue": "1000",
+    "Keywords": "fs25 hostgid"
+  },
+  {
+    "DisplayName": "04 - Démarrage auto du jeu",
+    "Description": "false pendant l'installation/mise à jour du jeu (accès VNC seulement). true une fois le jeu installé : le serveur de jeu démarre avec le conteneur. web_only : seulement le panel web.",
+    "FieldName": "AutostartServer",
+    "InputType": "enum",
+    "Category": "Farming Simulator 25",
+    "Subcategory": "Démarrage",
+    "ParamFieldName": "AutostartServer",
+    "IncludeInCommandLine": false,
+    "DefaultValue": "false",
+    "Keywords": "fs25 autostartserver",
+    "EnumValues": {
+      "false": "false",
+      "true": "true",
+      "web_only": "web_only"
+    }
+  },
+  {
+    "DisplayName": "10 - Nom du serveur",
+    "Description": "Nom affiché dans la liste des serveurs Farming Simulator.",
+    "FieldName": "ServerName",
+    "InputType": "text",
+    "Category": "Farming Simulator 25",
+    "Subcategory": "Serveur",
+    "ParamFieldName": "ServerName",
+    "IncludeInCommandLine": false,
+    "DefaultValue": "TeamKit FS25",
+    "Keywords": "fs25 servername"
+  },
+  {
+    "DisplayName": "11 - Mot de passe du serveur",
+    "Description": "Mot de passe pour rejoindre la partie. Vide = serveur ouvert.",
+    "FieldName": "ServerPassword",
+    "InputType": "password",
+    "Category": "Farming Simulator 25",
+    "Subcategory": "Serveur",
+    "ParamFieldName": "ServerPassword",
+    "IncludeInCommandLine": false,
+    "DefaultValue": "",
+    "Keywords": "fs25 serverpassword"
+  },
+  {
+    "DisplayName": "12 - Mot de passe admin en jeu",
+    "Description": "Mot de passe administrateur en jeu.",
+    "FieldName": "ServerAdmin",
+    "InputType": "password",
+    "Category": "Farming Simulator 25",
+    "Subcategory": "Serveur",
+    "ParamFieldName": "ServerAdmin",
+    "IncludeInCommandLine": false,
+    "DefaultValue": "teamkit",
+    "Keywords": "fs25 serveradmin"
+  },
+  {
+    "DisplayName": "13 - Joueurs max",
+    "Description": "Nombre maximum de joueurs (16 max pour FS25). Synchronisé avec AMP.",
+    "FieldName": "$MaxUsers",
+    "InputType": "number",
+    "Category": "Farming Simulator 25",
+    "Subcategory": "Serveur",
+    "ParamFieldName": "$MaxUsers",
+    "IncludeInCommandLine": false,
+    "DefaultValue": "16",
+    "Keywords": "fs25 $maxusers",
+    "MinValue": "1",
+    "MaxValue": "16"
+  },
+  {
+    "DisplayName": "14 - Région",
+    "Description": "Région/langue du serveur.",
+    "FieldName": "ServerRegion",
+    "InputType": "enum",
+    "Category": "Farming Simulator 25",
+    "Subcategory": "Serveur",
+    "ParamFieldName": "ServerRegion",
+    "IncludeInCommandLine": false,
+    "DefaultValue": "fr",
+    "Keywords": "fs25 serverregion",
+    "EnumValues": {
+      "fr": "fr",
+      "en": "en",
+      "de": "de",
+      "es": "es",
+      "it": "it",
+      "nl": "nl",
+      "pl": "pl",
+      "pt": "pt",
+      "br": "br"
+    }
+  },
+  {
+    "DisplayName": "15 - Map",
+    "Description": "Map de départ (MapUS par défaut ; voir la doc FS25 pour les autres maps officielles).",
+    "FieldName": "ServerMap",
+    "InputType": "text",
+    "Category": "Farming Simulator 25",
+    "Subcategory": "Serveur",
+    "ParamFieldName": "ServerMap",
+    "IncludeInCommandLine": false,
+    "DefaultValue": "MapUS",
+    "Keywords": "fs25 servermap"
+  },
+  {
+    "DisplayName": "16 - Difficulté",
+    "Description": "1 = facile, 2 = normal, 3 = départ de zéro.",
+    "FieldName": "ServerDifficulty",
+    "InputType": "enum",
+    "Category": "Farming Simulator 25",
+    "Subcategory": "Serveur",
+    "ParamFieldName": "ServerDifficulty",
+    "IncludeInCommandLine": false,
+    "DefaultValue": "3",
+    "Keywords": "fs25 serverdifficulty",
+    "EnumValues": {
+      "1": "1",
+      "2": "2",
+      "3": "3"
+    }
+  },
+  {
+    "DisplayName": "17 - Pause si vide",
+    "Description": "2 = met le serveur en pause quand aucun joueur n'est connecté. 1 = ne jamais mettre en pause.",
+    "FieldName": "ServerPause",
+    "InputType": "enum",
+    "Category": "Farming Simulator 25",
+    "Subcategory": "Serveur",
+    "ParamFieldName": "ServerPause",
+    "IncludeInCommandLine": false,
+    "DefaultValue": "2",
+    "Keywords": "fs25 serverpause",
+    "EnumValues": {
+      "1": "1",
+      "2": "2"
+    }
+  },
+  {
+    "DisplayName": "18 - Intervalle de sauvegarde (s)",
+    "Description": "Sauvegarde automatique en secondes (format décimal, ex. 180.000000).",
+    "FieldName": "SaveInterval",
+    "InputType": "text",
+    "Category": "Farming Simulator 25",
+    "Subcategory": "Serveur",
+    "ParamFieldName": "SaveInterval",
+    "IncludeInCommandLine": false,
+    "DefaultValue": "180.000000",
+    "Keywords": "fs25 saveinterval"
+  },
+  {
+    "DisplayName": "19 - Intervalle stats (s)",
+    "Description": "Intervalle de remontée des statistiques en secondes.",
+    "FieldName": "StatsInterval",
+    "InputType": "text",
+    "Category": "Farming Simulator 25",
+    "Subcategory": "Serveur",
+    "ParamFieldName": "StatsInterval",
+    "IncludeInCommandLine": false,
+    "DefaultValue": "31536000",
+    "Keywords": "fs25 statsinterval"
+  },
+  {
+    "DisplayName": "20 - Crossplay",
+    "Description": "Autorise le jeu croisé PC/consoles.",
+    "FieldName": "Crossplay",
+    "InputType": "checkbox",
+    "Category": "Farming Simulator 25",
+    "Subcategory": "Serveur",
+    "ParamFieldName": "Crossplay",
+    "IncludeInCommandLine": false,
+    "DefaultValue": "true",
+    "Keywords": "fs25 crossplay",
+    "EnumValues": {
+      "True": "true",
+      "False": "false"
+    }
+  },
+  {
+    "DisplayName": "30 - Utilisateur panel web",
+    "Description": "Identifiant du panel web FS25 (port dédié, voir la section Ports).",
+    "FieldName": "WebUsername",
+    "InputType": "text",
+    "Category": "Farming Simulator 25",
+    "Subcategory": "Panel & VNC",
+    "ParamFieldName": "WebUsername",
+    "IncludeInCommandLine": false,
+    "DefaultValue": "admin",
+    "Keywords": "fs25 webusername"
+  },
+  {
+    "DisplayName": "31 - Mot de passe panel web",
+    "Description": "Mot de passe du panel web FS25.",
+    "FieldName": "WebPassword",
+    "InputType": "password",
+    "Category": "Farming Simulator 25",
+    "Subcategory": "Panel & VNC",
+    "ParamFieldName": "WebPassword",
+    "IncludeInCommandLine": false,
+    "DefaultValue": "teamkit",
+    "Keywords": "fs25 webpassword"
+  },
+  {
+    "DisplayName": "32 - Mot de passe VNC",
+    "Description": "Mot de passe de l'accès VNC (installation initiale du jeu).",
+    "FieldName": "VncPassword",
+    "InputType": "password",
+    "Category": "Farming Simulator 25",
+    "Subcategory": "Panel & VNC",
+    "ParamFieldName": "VncPassword",
+    "IncludeInCommandLine": false,
+    "DefaultValue": "teamkit",
+    "Keywords": "fs25 vncpassword"
+  }
+]

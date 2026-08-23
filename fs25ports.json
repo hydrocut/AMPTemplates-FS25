@@ -1,0 +1,30 @@
+[
+  {
+    "Protocol": "Both",
+    "Port": 10823,
+    "Ref": "GamePort",
+    "Name": "Game Port",
+    "Description": "Port de jeu FS25 (TCP+UDP). Mappé vers 10823 dans le conteneur."
+  },
+  {
+    "Protocol": "TCP",
+    "Port": 7999,
+    "Ref": "WebPanelPort",
+    "Name": "Panel Web FS25",
+    "Description": "Panel d'administration web du serveur dédié FS25."
+  },
+  {
+    "Protocol": "TCP",
+    "Port": 6080,
+    "Ref": "VncWebPort",
+    "Name": "VNC (navigateur)",
+    "Description": "Accès noVNC via navigateur pour l'installation initiale du jeu."
+  },
+  {
+    "Protocol": "TCP",
+    "Port": 5900,
+    "Ref": "VncPort",
+    "Name": "VNC (client)",
+    "Description": "Accès VNC classique (TigerVNC, RealVNC...) pour l'installation."
+  }
+]
