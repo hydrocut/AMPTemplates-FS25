@@ -87,7 +87,8 @@ publiquement une fois l'installation terminée (règle firewall ou accès via VP
 # Template `farming25teamkit` — officiel + proxy HTTPS
 
 Copie **conforme** du template officiel `farming-simulator-25` de CubeCoders,
-avec une seule différence de fond : le lien que le panel AMP affiche.
+avec deux différences de fond : le lien que le panel AMP affiche, et la liste
+des joueurs, que l'officiel ne voit jamais (voir plus bas).
 
 ## Le problème
 
@@ -149,6 +150,45 @@ Meta.OriginalSource=hydrocut-AMPTemplates-FS25-main
 Rien d'autre. Ni `ConfigRoot`, ni `RootDir`, ni les ports, ni les réglages du
 jeu. Au démarrage suivant, AMP relit les métadonnées depuis **ce** template et
 affiche `https://farming25.teamkit.fr`.
+
+## Deuxième différence : les joueurs visibles dans AMP (1er oct. 2026)
+
+Avec le template officiel, AMP affiche **0 joueur** en permanence, même quand
+la ferme est pleine. Deux raisons :
+
+1. AMP lit `{{$FullBaseDir}}logs/server_*.log` (`App.TailLogFilePath`), qui est
+   le journal du **panneau web** de GIANTS : connexions admin, erreurs HTTP… et
+   **aucune** arrivée de joueur ;
+2. les expressions `Console.UserJoinRegex` / `UserLeaveRegex` sont **vides**.
+
+Les arrivées sont écrites dans le journal du **jeu**,
+`farming-simulator-25/profile/log_<date>.txt` (un seul fichier à la racine du
+profil : les anciens partent dans `profile/logs/`) :
+
+```
+2026-10-01 17:06:12.441 Jiji3772 joined the game
+2026-10-01 17:18:38.829 Jiji3772 lost connection to the game
+2026-10-01 17:05:47.539 Jiji3772 was kicked from the game
+```
+
+Ce template lit donc ce fichier-là, et reconnaît trois façons de partir :
+
+| Clé | Valeur |
+|---|---|
+| `App.TailLogFilePath` | `{{$FullBaseDir}}profile/log_*.txt` |
+| `Console.FilterMatchRegex` | retire l'horodatage `AAAA-MM-JJ hh:mm:ss.mmm` |
+| `Console.UserJoinRegex` | `… joined the game` |
+| `Console.UserLeaveRegex` | `… left the game`, `… lost connection to the game`, `… was kicked from the game` |
+| `Console.HideFromConsoleRegex` | masque les milliers de lignes de chargement `….i3d (12.3 ms)` |
+
+Les expressions acceptent la ligne avec ou sans horodatage, et un pseudo avec
+des espaces. Contrepartie : la console d'AMP montre le journal du jeu au lieu
+de celui du panneau web — le panneau garde le sien dans
+`profile/dedicated_server/logs/`.
+
+⚠️ Comme le lien, ces clés sont **figées dans l'instance** à sa création : un
+« Fetch Latest » ne les recopie pas. Instance **arrêtée**, puis
+`dedie/reporter-console-template.py` du dépôt TeamKit.
 
 ## Et le reverse proxy
 
